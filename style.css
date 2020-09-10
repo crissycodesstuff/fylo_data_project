@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+:root {
+    --mobile-width: 375px;
+    --desktop-width: 1440px;
+    --primary-color: linear-gradient( 90deg, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+    --pale-blue: hsl(243, 100%, 93%);
+    --grayish-blue: hsl(229, 7%, 55%);
+    --dark-blue: hsl(228, 56%, 26%);
+    --very-dark-blue: hsl(229, 57%, 11%);
+    --body-copy-color: hsl(255, 100%, 100%);
+    --body-font-size: 14px;
+    --font: "Raleway", sans-serif;
+    --bg-desktop: url(./images/bg-desktop.png);
+    --bg-mobile: url(./images/bg-mobile.png);
+    --progress-amount: 81.5%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    font-size: var(--body-font-size);
+    background: var(--very-dark-blue);
+    color: var(--body-copy-color);
+}
+
+.container {
+    max-width: var(--desktop-width);
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: var(--bg-desktop) no-repeat;
+    background-size: 100% auto;
+    height: 50%;
+    z-index: -1;
+}
+
+.content {
+    width: 920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+
+/* Left side on desktop */
+
+.left-container {
+    padding: 40px;
+    width: 350px;
+    height: 201px;
+    border-radius: 10px 100px 10px 10px;
+    background: var(--dark-blue);
+}
+
+
+/*Icons below logo*/
+
+.actions {
+    margin-top: 30px;
+    display: flex;
+}
+
+.new-file,
+.new-folder,
+.new-upload {
+    width: 48px;
+    height: 48px;
+    background: var(--very-dark-blue);
+    padding: 12px;
+    border-radius: 10px;
+    margin-right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 150ms;
+}
+
+.new-file:hover,
+.new-folder:hover,
+.new-upload:hover {
+    opacity: 0.75;
+}
+
+
+/* Right side on desktop */
+
+.right-container {
+    position: relative;
+    padding: 40px;
+    width: 540px;
+    height: 154px;
+    border-radius: 10px;
+    background: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.used-storage {
+    line-height: 16px;
+    margin-bottom: 16px;
+}
+
+.storage-bar {
+    width: 100%;
+    height: 20px;
+    background: var(--very-dark-blue);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.progress {
+    width: var(--progress-amount);
+    height: 14px;
+    background: var(--primary-color);
+    margin-left: 3px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 2px;
+    background: white;
+}
+
+.storage-numbers {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.storage {
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.remaining-storage {
+    position: absolute;
+    top: -47px;
+    right: 40px;
+    background: #fff;
+    color: var(--very-dark-blue);
+    width: 179px;
+    height: 72px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.remaining-storage h2 {
+    font-size: 40px;
+}
+
+.remaining-storage small {
+    color: var(--grayish-blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-top: 22px solid transparent;
+    border-bottom: 22px solid transparent;
+    border-right: 22px solid #fff;
+    z-index: 10;
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+}
+
+@media screen and (max-width: 950px) {
+    .container {
+        max-width: var(--mobile-width);
+    }
+    .bg {
+        background: var(--bg-mobile) no-repeat center center/cover;
+        height: 100%;
+    }
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-container {
+        width: 326px;
+        margin-bottom: 16px;
+    }
+    .right-container {
+        padding: 32px;
+        width: 326px;
+    }
+    .remaining-storage {
+        top: auto;
+        right: auto;
+        bottom: -25%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .arrow {
+        display: none;
+    }
+    .storage-numbers {
+        margin-bottom: 16px;
+    }
+}
